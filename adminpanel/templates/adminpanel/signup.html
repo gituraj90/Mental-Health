@@ -1,0 +1,14 @@
+{% extends 'adminpanel/dashboard.html' %}
+{% block title %}Admin Signup{% endblock %}
+
+{% block content %}
+<h2 class="text-center mb-4">Admin Signup</h2>
+<form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success mt-3">Sign Up</button>
+</form>
+<p class="mt-3 text-center">
+    Already have an account? <a href="{% url 'admin_login' %}">Login here</a>
+</p>
+{% endblock %}

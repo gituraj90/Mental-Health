@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Client Sign Up{% endblock %}
+{% block content %}
+<h3 class="text-center mb-4">Client Sign Up</h3>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for field in form %}
+        <div class="mb-3">
+            {{ field.label_tag }} {{ field }}
+            {{ field.errors }}
+        </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-success w-100">Sign Up</button>
+</form>
+<p class="text-center mt-3">
+    Already have an account? <a href="{% url 'client_login' %}">Login</a>
+</p>
+{% endblock %}

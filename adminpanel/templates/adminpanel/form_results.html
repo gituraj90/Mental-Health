@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Submissions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef6f9;
+            padding: 40px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #2e7d32;
+            color: white;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    <h2>Submitted Mental Health Forms</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Stress Level</th>
+            <th>Diagnosed</th>
+            <th>Symptoms</th>
+            <th>Other Issues</th>
+            <th>Submitted At</th>
+        </tr>
+        {% for submission in submissions %}
+        <tr>
+            <td>{{ submission.name }}</td>
+            <td>{{ submission.email }}</td>
+            <td>{{ submission.stress_level }}</td>
+            <td>{{ submission.diagnosed }}</td>
+            <td>{{ submission.symptoms }}</td>
+            <td>{{ submission.other_issues }}</td>
+            <td>{{ submission.submitted_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

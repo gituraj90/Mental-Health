@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Survey</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background-color: #f0f9ff;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+            text-align: left;
+        }
+        input[type="text"], input[type="email"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        .checkbox-group {
+            text-align: left;
+            margin-top: 10px;
+        }
+        .checkbox-group label {
+            font-weight: normal;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        .btn {
+            background-color: #388e3c;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            cursor: pointer;
+            border-radius: 25px;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: 0.3s;
+            width: 100%;
+        }
+        .btn:hover {
+            background-color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Mental Health Survey</h1>
+        <p>Your mental well-being is important to us. Please answer the questions below honestly.</p>
+
+        <form method="post">
+            {% csrf_token %}
+            
+
+            <label for="id_name">Full Name:</label>
+            {{ form.name }}
+
+            <label for="id_email">Email Address:</label>
+            {{ form.email }}
+
+            <label>How often do you feel stressed?</label>
+            <select name="stress_level" required>
+                <option value="">Select an option</option>
+                <option value="Rarely">Rarely</option>
+                <option value="Sometimes">Sometimes</option>
+                <option value="Often">Often</option>
+                <option value="Always">Always</option>
+            </select>
+
+            <label>Have you ever been diagnosed with a mental health condition?</label>
+            <select name="diagnosed" required>
+                <option value="">Select an option</option>
+                <option value="No">No</option>
+                <option value="Yes, by a professional">Yes, by a professional</option>
+                <option value="Self-diagnosed">Self-diagnosed</option>
+            </select>
+
+            <label>Check any symptoms you experience:</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="symptoms" value="Anxiety"> Anxiety</label>
+                <label><input type="checkbox" name="symptoms" value="Depression"> Depression</label>
+                <label><input type="checkbox" name="symptoms" value="Stress"> Stress</label>
+                <label><input type="checkbox" name="symptoms" value="Sleep Issues"> Sleep Issues</label>
+                <label><input type="checkbox" name="symptoms" value="Mood Swings"> Mood Swings</label>
+                <label><input type="checkbox" name="symptoms" value="Lack of Motivation"> Lack of Motivation</label>
+            </div>
+
+            <label for="id_other_issues">Other Mental Health Concerns:</label>
+            <textarea name="other_issues" rows="4" placeholder="Mention any other concerns..."></textarea>
+            
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>

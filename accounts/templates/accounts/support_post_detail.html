@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <a href="{% url 'support_forum' %}" class="btn btn-secondary mb-3">← Back</a>
+
+  <h4>{{ post.title }}</h4>
+  <p>{{ post.content }}</p>
+  <hr>
+
+  <h5>Replies</h5>
+  {% for reply in replies %}
+    <div class="bg-light p-3 mb-2 rounded">
+      {{ reply.content }}
+      <br><small class="text-muted">{{ reply.created_at|date:"d M Y, H:i" }}</small>
+    </div>
+  {% empty %}
+    <p>No replies yet.</p>
+  {% endfor %}
+
+  <form method="POST" class="mt-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-outline-primary">Reply</button>
+  </form>
+</div>
+{% endblock %}

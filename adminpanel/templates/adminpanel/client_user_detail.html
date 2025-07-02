@@ -1,0 +1,24 @@
+{% extends 'adminpanel/dashboard.html' %}
+{% block title %}Client User Detail{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h3>{{ profile.full_name }} ({{ user_obj.username }})</h3>
+    <p><strong>Email:</strong> {{ user_obj.email }}</p>
+    <p><strong>Age:</strong> {{ profile.age }}</p>
+    <p><strong>Gender:</strong> {{ profile.gender }}</p>
+
+    <hr>
+    <h5>Chat Records</h5>
+    <div class="list-group">
+        {% for chat in chats %}
+        <div class="list-group-item">
+            <p><strong>You:</strong> {{ chat.user_message }}</p>
+            <p><strong>Bot:</strong> {{ chat.bot_response }}</p>
+            <small class="text-muted">{{ chat.timestamp|date:"Y-m-d H:i:s" }}</small>
+        </div>
+        {% empty %}
+        <p>No chat records found.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

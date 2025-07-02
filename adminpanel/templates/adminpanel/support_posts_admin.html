@@ -1,0 +1,25 @@
+{% extends 'adminpanel/dashboard.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h3>Support Forum Posts</h3>
+  {% for post in posts %}
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5>{{ post.title }}</h5>
+        <p>{{ post.content }}</p>
+        <small class="text-muted">{{ post.created_at }}</small>
+        <hr>
+        <strong>Replies:</strong>
+        {% for reply in post.replies.all %}
+          <div class="ps-3">
+            <p>{{ reply.content }}</p>
+            <small class="text-muted">{{ reply.created_at }}</small>
+          </div>
+        {% empty %}
+          <p>No replies</p>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'adminpanel/dashboard.html' %}
+
+{% block content %}
+<h2 class="text-xl font-bold mb-4">Submitted Mental Health Forms</h2>
+<table class="table-auto w-full border-collapse">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Stress Level</th>
+            <th>Diagnosed</th>
+            <th>Symptoms</th>
+            <th>Other Issues</th>
+            <th>Submitted At</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for form in submissions %}
+        <tr>
+            <td>{{ form.name }}</td>
+            <td>{{ form.email }}</td>
+            <td>{{ form.stress_level }}</td>
+            <td>{{ form.diagnosed }}</td>
+            <td>{{ form.symptoms }}</td>
+            <td>{{ form.other_issues }}</td>
+            <td>{{ form.submitted_at }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="7">No submissions yet.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
